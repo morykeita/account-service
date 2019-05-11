@@ -1,0 +1,50 @@
+check-user-scopes: true
+
+server:
+  port: 9001
+spring:
+  application:
+    name: authorization-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/chitchat?useSSL=false&autoreconnect=true
+    username: morykeita
+    password: abcdef
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+      test-while-idle: true
+      validation-query: SELECT 1
+    initialization-mode: never
+    platform: mysql
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      ddl-auto: update
+
+
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+  instance:
+    hostname: localhost
+
+
+security:
+  oauth2:
+    client:
+      clientId: 846576395706206
+      clientSecret: 8fe776cd6a3a6307e690186dca489610
+      accessTokenUri: https://graph.facebook.com/oauth/access_token
+      userAuthorizationUri: https://www.facebook.com/dialog/oauth
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://graph.facebook.com/me

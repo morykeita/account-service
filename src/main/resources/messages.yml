@@ -1,0 +1,8 @@
+check-user-scopes: true
+
+user:
+  username:
+    notNull : Username cannot be null
+    notBlank : Username cannot be blank
+    size : Usename must be beween 3 and 25 characters.
+
